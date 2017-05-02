@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>畅游天地</title>
+    <link type="text/css" rel="stylesheet" href="css/main_s.css">
+    <link type="text/css" rel="stylesheet" href="css/jquery.panorama">
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/jquery.panorama.js"></script>
+    <!--<script src="js/main.js"></script>-->
+</head>
+<body>
+<div class="kf">
+    <div class="kf_l">客<br/>服</div>
+    <div class="kf_r">
+        &nbsp;&nbsp;&nbsp;客服电话：400-0000-5658<br/>
+        &nbsp;&nbsp;&nbsp;客服QQ：123456789156<br/>
+    </div>
+</div>
+<header class="header_s">
+    <nav>
+        <ul>
+            <li><a href="index_s.html">首页</a></li>
+            <li class="show_u"><a>案例展示</a>
+                <ul class="show_s">
+                    <li><a href="#">埃德森</a></li>
+                    <li><a href="che.html">车行健</a></li>
+                </ul>
+            </li>
+            <img src="images/pic/logo_s1.png">
+            <li><a href="aboutus.html">关于我们</a></li>
+            <li><a  class="kf_shows">联系我们</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="box_a">
+    <!--背景蒙板-->
+    <div class="box_a_mb">
+        <!--<div class="box_s1_m1x">关闭</div>-->
+        <!--<div class="box_s1_m2x">关闭</div>-->
+        <!--<div class="box_s1_m3x">关闭</div>-->
+    </div>
+    <!--底层文字-->
+    <div class="box_a_text0">
+        <img  class="text1s hides" src="images/pic/text1.png">
+        <img  class="text2s hides"  src="images/pic/text2.png">
+        <img  class="text3s hides"  src="images/pic/text3.png">
+
+    </div>
+    <div id="container">
+        <img src="images/pic/2016pano.jpg" class="panorama" width="2642" height="375" />
+    </div>
+
+
+</div>
+
+<!--关于我们-->
+<div class="box_d">
+    <div class="box_ds">
+        <img  class="logo_box_d" src="images/pic/logo_gy.png">
+        <p>
+            哈尔滨市畅游天地科技开发有限公司是一家以互联网为依托，为传统行业提供互联网+新兴模式客制化的网络服务公司，是专业为商务客户研发手机APP，网络游戏，大型软件，企业网站制作等配套设备，集运营，销售及推广于一体的中国数字化产品及服务提供商。此外，公司还自主研发、运营互联网+汽车紧急救援等首创项目。
+        </p>
+        <p>
+            2016年6月，公司股份正式改制为龙商满堂红集团旗下企业，通过改制加强公司整体实力，使得公司能更好的为龙江产业做出贡献。
+        </p>
+        <div><a href="aboutus.html">关于我们</a></div>
+    </div>
+</div>
+<!--页脚-->
+<div class="footer_y">
+    <div class="footer_s">
+        <div class="footer_s1">
+            <img src="images/pic/erweima.jpg">
+            <div class="footer_s1s">
+                龙商满堂红（北京）集团有限公司<br/>
+                电话：010-000000<br/>
+                地址：黑龙江省哈尔滨市平房区<br/>
+                动漫产业基地X栋<br/>
+            </div>
+        </div>
+        <ul class="footer_s2s">
+            <li><a href="#">版权声明</a></li>
+            <li><a href="#">免责声明</a></li>
+            <li>备案号：© 2016 畅游天地 黑ICP证080268号</li>
+
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    //    顶部菜单动画
+    $(".header_s").animate({top:"0px"},1000);
+    //第一部分和蒙板高度
+    $(".box_a").height($(window).height());
+    $(".box_a_mb").height($(window).height());
+
+
+//    客服菜单固定
+    $(".kf_shows").click(function () {
+        $(".kf").toggleClass("kf_show");
+    });
+    $(".kf").click(function(){
+        $(this).toggleClass("kf_show");
+    });
+
+
+//页面定时动画
+    setTimeout(function(){
+        $(".text1s").removeClass("hides");
+    },800);
+    setTimeout(function(){
+        $(".text2s").removeClass("hides");
+    },1400);
+    setTimeout(function(){
+        $(".text3s").removeClass("hides");
+    },2000);
+    setTimeout(function(){
+        $(".box_a_show1").fadeIn("fast")
+                .animate({width:"380px",height:"558px"},800)
+                .removeClass("box_s1_m0r")
+                .addClass("box_a_show1w");
+    },2500);
+//
+    setTimeout(function(){
+        $(".box_a_show3").fadeIn("fast")
+                .animate({width:"380px",height:"558px"},800)
+                .removeClass("box_s1_m0r")
+                .addClass("box_a_show3w");
+    },3500);
+
+    //    点击，移动，置顶，添加蒙板
+    $(".box_a_show1").click(function(){
+        $(this).animate({top:'160px', left:'24%'},"2s").addClass("box_s1_m0").removeClass("box_a_show1w");
+        $(".box_a_mb").show();
+        $(".box_s1_m1x").fadeIn();
+        $(".box_a_text1").fadeIn(2000);
+    });
+//    $(".box_a_show2").click(function(){
+//        $(this).animate({top:'160px', left:'24%'},"2s").addClass("box_s1_m0").removeClass("box_a_show2w");
+//        $(".box_a_mb").show();
+//        $(".box_s1_m2x").fadeIn();
+//        $(".box_a_text2").fadeIn(2000);
+//
+//    });
+    $(".box_a_show3").click(function(){
+        $(this).animate({top:'160px', left:'24%'},"2s").addClass("box_s1_m0").removeClass("box_a_show3w");
+        $(".box_a_mb").show();
+        $(".box_s1_m3x").fadeIn();
+        $(".box_a_text3").fadeIn(2000);
+
+    });
+    //    关闭
+    $(".box_s1_m1x").click(function() {
+        $(".box_a_show1").animate({left:"50%",top:"30%"},"2s").removeClass("box_s1_m0").addClass("box_a_show1w");
+        $(".box_a_mb").hide();
+        $(".box_s1_m1x").fadeOut();
+        $(".box_a_text1").fadeOut();
+
+    });
+//    $(".box_s1_m2x").click(function() {
+//        $(".box_a_show2").animate({left:"55%",top:"30%"},"2s").removeClass("box_s1_m0").addClass("box_a_show2w");
+//        $(".box_a_mb").hide();
+//        $(".box_s1_m2x").fadeOut();
+//        $(".box_a_text2").fadeOut();
+//
+//    });
+    $(".box_s1_m3x").click(function() {
+        $(".box_a_show3").animate({left:"59%",top:"28%"},"2s").removeClass("box_s1_m0").addClass("box_a_show3w");
+        $(".box_a_mb").hide();
+        $(".box_s1_m3x").fadeOut();
+        $(".box_a_text3").fadeOut();
+
+    });
+
+
+    //悬停
+    $(".box_a_show1w").mouseover(function(){
+
+        $(this).animate({top:'31%'},"2s");
+    });
+//    $(".box_a_show2w").mouseover(function(){
+//        $(this).animate({top:'31%'},"2s");
+//    });
+    $(".box_a_show3w").mouseover(function(){
+        $(this).animate({top:'30%'},"2s");
+    });
+
+</script>
+
+</body>
+</html>

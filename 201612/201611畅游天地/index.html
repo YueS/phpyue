@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>畅游天地</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script type="text/javascript" src='js/jquery-2.1.1.min.js'></script>
+	<script src='js/jquery.mousewheel.js'></script>
+</head>
+<body>
+<div class="kf">
+	<div class="kf_l">客<br/>服</div>
+	<div class="kf_r">
+		&nbsp;&nbsp;&nbsp;客服电话：400-0000-5658<br/>
+		&nbsp;&nbsp;&nbsp;客服QQ：123456789156<br/>
+	</div>
+</div>
+<div id="cloud"></div>
+<div id="mountain_inside"></div>
+<div id="mountain_outside"></div>
+<div id="logo">
+	<div id="title"></div>
+</div>
+<ul class="lang">
+	<li class="lang-china"></li>
+	<li class="lang-eng"></li>
+</ul>
+<ul id="menu">
+	<li class="list">
+		<div><a href="index_vrp2.html">首页</a></div>
+	</li>
+	<li class="list">
+		<div><a href="">项目案例</a></div>
+		<ul id="list-font">
+			<li><a href="che.html">车行健道里救援系统</a></li>
+			<!--<li><a href="">喜出网外直播平台</a></li>-->
+			<!--<li><a href="">埃德森</a></li>-->
+		</ul>
+	</li>
+	<li class="list">
+		<div><a href="aboutus.html">关于我们</a></div>
+	</li>
+	<li class="list">
+		<div><a class="kf_shows">联系我们</a></div>
+	</li>
+	<li class="list">
+		<div><a class="kf_shows">客服</a></div>
+	</li>
+</ul>
+</body>
+<script type="text/javascript">
+	//    客服菜单固定
+	$(".kf").click(function(){
+		alert(1);
+		$(this).toggleClass("kf_show");
+	});
+	$(".kf_shows").click(function () {
+		$(".kf").toggleClass("kf_show");
+	});
+
+	var logo_height = $(window).height() / 2 - 150;
+	var logo_width = $(window).width() / 2 - 150;
+	$('#logo').css('top',logo_height+'px');
+	$('#logo').css('left',logo_width+'px');
+	var max = - 4000 + $(window).height();
+
+	//console.log(max+':'+logo_height+':'+logo_width);
+	setTimeout(function(){
+		$('#mountain_inside').animate({bottom:'50px'},2000,'linear');
+		$('#mountain_outside').animate({bottom:'-50px'},2000,'linear');
+
+	},100);
+	setTimeout(function(){
+		$('#mountain_outside').animate({bottom:'-350px'},3000,'linear');
+		$('#mountain_inside').animate({bottom:'-200px'},3000,'linear');
+		$('#cloud').animate({bottom:'-500px'},3000,'linear');
+		$('#logo').fadeToggle(4000);
+	},2100);
+	setTimeout(function(){
+		$('#mountain_outside').animate({bottom:'-750px'},1500,'linear');
+		$('#mountain_outside').animate({bottom: max + 'px'},1000,'linear');
+		$('#mountain_inside').animate({bottom:'-900px'},2000,'linear');
+		$('#mountain_inside').animate({bottom: max + 'px'},1000,'linear');
+		$('#cloud').animate({bottom: max + 'px'},4000,'linear');
+	},5100);
+	setTimeout(function(){
+		$('#menu').animate({bottom:'0px'},1000,'linear');
+		$('.lang').show();
+	},8100);
+
+	$('.list div').mouseover(function(){
+		$('.list div').siblings('ul').slideUp(500);
+		$(this).siblings('ul').slideToggle(500);
+	});
+	$('#cloud').mouseout(function(){
+		$('.list div').siblings('ul').slideUp(500);
+	});
+	$(document).on("mousewheel DOMMouseScroll", function (e) {
+		var delta = (e.originalEvent.wheelDelta && (e.originalEvent.wheelDelta > 0 ? 1 : -1)) ||  // chrome & ie
+				(e.originalEvent.detail && (e.originalEvent.detail > 0 ? -1 : 1));              // firefox
+		if (delta > 0) {
+			// 向上滚
+			if ($(document).scrollTop() <= 100 ) {
+				if ($('#menu').css('bottom') == '-50px') {
+					$('#menu').animate({bottom:'0px'},500,'linear');
+				};
+				if ($('#title').css('display') != 'block') {
+					$('#title').fadeIn(1000);
+				};
+			};
+			console.log("wheelup:"+$(document).scrollTop());
+		} else if (delta < 0) {
+			// 向下滚
+			console.log("wheeldown:"+$(document).scrollTop());
+			if ($(document).scrollTop() > 100 ) {
+				if ($('#menu').css('bottom') != '-50px') {
+					$('#menu').animate({bottom:'-50px'},500,'linear');
+				};
+				if ($('#title').css('display') == 'block') {
+					$('#title').fadeOut(1000);
+				};
+			};
+		}
+	});
+
+
+
+</script>
+</html>

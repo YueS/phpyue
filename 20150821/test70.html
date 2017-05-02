@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)http://192.168.1.48:81/javascriptproject_33/test70.html -->
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+       //html5跨域通信
+
+        function fun1(){
+            //window对象的postMessage表示向其他窗口发送消息
+            //postMessage(所发送的消息文本，接收消息的对象窗口的URL地址)
+           window.frames[0].postMessage("你好，远程服务器","http://192.168.1.50:81/work_8_21_01zikuangjia.html");
+        }
+    </script>
+</head>
+<body>
+   <iframe width="400" height="400" style="border:1px solid red" src="../test70_files/work_8_21_01zikuangjia.html" onload="fun1()">
+
+   </iframe>
+
+</body></html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table{
+            border-collapse: collapse;
+            margin-top: 70px;
+        }
+        table tr td{
+            height: 30px;
+            border: 1px solid black;
+            width: 70px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+<form>
+姓名：<input type="text" name="name" id="name"><br><br>
+年龄：<input type="text" name="age" id="age"><br><br>
+工资：<input type="text" name="wages" id="wages"><br><br>
+入职日期：<input type="text" name="date" id="date"><br><br>
+职位：<input type="text" name="position" id="position"><br><br>
+所属部门：<select id="bumen" ><br><br>
+         </select><br><br>
+    <input type="button" value="注册" onclick="fun_zc()">
+    <input type="button" value="查询全部" onclick="fun_chaxun()">
+</form>
+<table id="tab01">
+    <tr>
+        <td>员工id</td>
+        <td>姓名</td>
+        <td>工资</td>
+        <td>部门名称</td>
+        <td>部门描述</td>
+        <td>修改保存</td>
+    </tr>
+</table>
+</body>
+</html>
+        <script>
+            function createXHR(){
+                var XHRequst;
+                if(window.XMLHttpRequest){
+                    XHRequst =new XMLHttpRequest();
+                }else if(window.ActiveXObject){
+                    try{
+                        XHRequst=  new ActiveXObject("Msxml2.XMLHTTP");
+                    }catch (e){
+                        XHRequst=  new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                }
+                return XHRequst;
+            }
+            function ajax1(url,arg){
+                var v_str;
+                var XHRequst=createXHR();
+                XHRequst.open("POST",url,false);//false同步
+                XHRequst.setRequestHeader('Content-type',"application/x-www-form-urlencoded");
+                XHRequst.onreadystatechange=function(){
+                    if(XHRequst.readyState ==4 && XHRequst.status==200){
+                        v_str=XHRequst.responseText;
+                    }
+                };
+                XHRequst.send(arg);
+                return v_str;
+            }
+            var bumen=document.getElementById('bumen');
+            var b="";
+            var b_url="test_8_11_01.php";
+            var b_str=ajax1(b_url,null);
+            var b1=eval(b_str);
+            for(var i=0;i<b1.length;i++){
+               b+="<option value='"+b1[i].bid+"'>"+b1[i].bname+"</option>" ;
+            }
+            bumen.innerHTML= b;
+           function fun_zc(){
+               var name=document.getElementsByName('name')[0].value;
+               var age=document.getElementsByName('age')[0].value;
+               var wages=document.getElementsByName('wages')[0].value;
+               var date=document.getElementsByName('date')[0].value;
+               var position=document.getElementsByName('position')[0].value;
+               var bumen=document.getElementById('bumen').value;
+               var zc_url="test_8_11_02.php";
+               var zc_arg="name="+name+"&age="+age+"&wages="+wages+"&date="+date+"&position="+position+"&bumen="+bumen;
+               var zc_str=ajax1(zc_url,zc_arg);
+                alert(zc_str)
+           }
+           function fun_chaxun(){
+               var tab=document.getElementById('tab01');
+               var zc_url="test_8_11_03.php";
+               var zc_str=ajax1(zc_url,null);
+               var zc1=eval(zc_str);
+               for(var i=0;i<zc1.length;i++){
+                   tab.innerHTML+="<tr><td>"+zc1[i].eid+"</td><td>"+zc1[i].ename+"</td><td>"+zc1[i].ewages+"</td><td>"+zc1[i].bname+"</td><td>"+zc1[i].bwork+"</td><td><input type='button' value='修改' onclick='fun_xg(this)'><input type='button' value='保存'onclick='fun_save(this)'></td></tr>";
+               }
+           }
+            function fun_xg(a){
+                var tab=document.getElementById('tab01');
+                    var v1=a.parentNode.parentNode.rowIndex;
+                    for (var j =1; j < tab.rows.length+1;j++) {
+                        tab.rows[v1].cells[j].innerHTML = "<input type='text' value='"+tab.rows[v1].cells[j].innerText+"'>";
+                    }
+
+            }
+            function fun_save(a){
+                var tab=document.getElementById('tab01');
+                for(var i=0;i<tab.rows.length;i++){
+                    for(var j=1;j<tab.rows[i].cells.length-1;j++){
+                        a.parentNode.parentNode.cells[j].innerText= a.parentNode.parentNode.cells[j].children[0].value;
+                    }
+                }
+
+            }
+        </script>

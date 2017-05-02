@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function ajax1(url,arg){
+            var v_str;
+            var XHRequst=createXHR();
+            XHRequst.open("POST",url,flase);
+            XHRequst.setRequestHeader('Content-type',"application/x-www-form-urlencoded");
+            XHRequst.onreadystatenchange= function () {
+                if(XHRequst.readyStte==4 && XHRequst.status==200){
+                    v_str=XHRequst.responseText;
+                    alert(v_str);
+                }
+            }
+            XHRequst.send(arg);
+            return v_str;
+        }
+        function fun_queryall(){
+            var v_url=".php";
+            var v_str=ajax(v_url,null);
+            var v1=eval(v_str);
+            alert(v1[0].username);
+            alert(v1[1].username);
+        }
+    </script>
+
+
+
+</head>
+<body>
+
+<input type="button" onclick="fun_queryall()" value="查询全部">
+</body>
+</html>

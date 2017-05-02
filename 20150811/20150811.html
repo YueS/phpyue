@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //json
+        //json:javascript object Notation,是一种简单的数据交换格式
+        //语法：{
+        // 名称，值，民称：值.....}
+
+
+
+//        function person(v1,v2,v3){
+//            this.name=v1;
+//            this.sex=v2;
+//        }
+//        var a1=new person("张三","男");
+        //直接量---基础json语句
+//        var person={name:"张三",sex:"男"};
+//        方式1
+//        var person={name:"张三",sex:"男"};
+//        person.name;
+        //        alert(person.tel[1]);//456
+
+        //        方式2
+//        var person={name:"张三",
+//            sex:"男",
+//            tel:['123','456','789'],
+//            friends:[{fname:'hh',fage:12,fwx:'女'},
+//                        {fname:'mm',fage:21,fsex:'男'},
+//                        {fname:'zz',fage:31,fsex:'不详'}]
+//        };
+////        person.friends[0].fname;
+
+        //特殊
+//        var arr=[{fname:'hh',fage:12,fwx:'女'},{fname:'mm',fage:21,fsex:'男'},{fname:'zz',fage:31,fsex:'不详'}];
+//        var i;
+//        for(i=0;i<arr.length;i++){
+//            str+=arr[i].fname+"   "+arr[i].fage+"   "+arr[i].fsex;
+//
+//        }
+//        document.write(str);
+
+
+//        var obj={name:"zs",show:function(){alert(name)}};
+
+
+        //字符串形式数组（包含json数据）转换输出
+        var arr="[{fname:'hh',fage:12,fwx:'女'},{fname:'mm',fage:21,fsex:'男'},{fname:'zz',fage:31,fsex:'不详'}]";
+        var arrpbj=eval(arr);
+//        alert(arrpbj[0].fname);
+
+
+        //json对象转换为json对象
+            var person='{name:"张三,xex:"男}';
+        //方式1
+//            var personbj=eval('('+person+')');
+//        person.name;
+//        alert(person.name);
+
+        //方式2
+        //需要json。js包支持
+
+    </script>
+
+
+
+
+</head>
+<body>
+
+</body>
+</html>

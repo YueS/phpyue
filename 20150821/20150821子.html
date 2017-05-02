@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //html5跨域
+        //window对象的postMessage 表示向其他窗口发送消息
+        //postMessage（所发送的消息文本，接收消息的对象窗口的url地址）
+        function fun1(){
+            window.frames[0].postMessage("你好，欢迎光临，远程服务器。","")
+        }
+
+    </script>
+</head>
+<body>
+<iframe width="400" height="400" style="border: 1px solid red"
+        src="http://192.168.1.44:81/20150821/20150821子.html"
+        onload="fun1()">
+
+</iframe>
+</body>
+</html>

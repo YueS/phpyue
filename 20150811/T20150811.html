@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function createXHR(){
+            var XHRequst;
+            if(window.XMLHttpRequest){ //目前高版本浏览器，ie高版本
+                XHRequst =new XMLHttpRequest();
+            }else if(window.ActiveXObject){
+                try{
+                    XHRequst=  new ActiveXObject("Msxml2.XMLHTTP");//ie7+  firefox 低版本
+                }catch (e){
+                    XHRequst=  new ActiveXObject("Microsoft.XMLHTTP");//ie5 ie6
+                }
+            }
+            return XHRequst;
+        }
+
+        function ajax1(url,arg){
+            var v_str;
+            var XHRequst=  createXHR();
+            XHRequst.open("POST",url,false);
+            XHRequst.setRequestHeader('Content-type',"application/x-www-form-urlencoded");
+            XHRequst.onreadystatechange=function(){
+                if(XHRequst.readyState ==4 && XHRequst.status==200){
+                    v_str=XHRequst.responseText;
+//                       alert(v_str);
+                }
+            }
+            XHRequst.send(arg);
+            return v_str;
+        }
+
+        function fun_queryall(){
+            var v_url="T20150811.php";
+            var v_str=ajax1(v_url,null);
+//            alert(v_str);
+            var v1=eval(v_str);
+            alert(v1[0].username);
+            alert(v1[1].username);
+
+        }
+    </script>
+</head>
+<body>
+<input type="button" onclick="fun_queryall()" value="查询全部">
+</body>
+</html>
+
+
+
+<!--才华 14:47:20-->
+<!--<script>-->
+    <!--function fun(){-->
+        <!--var a = getdata("text9.php");-->
+        <!--var v1 = eval(a);-->
+        <!--var tr = document.createElement("tr");-->
+        <!--var td = document.createElement("td");-->
+        <!--for(var i=0;i<v1.length;i++){-->
+            <!--var tdr1 = tr.cloneNode(true);-->
+            <!--var td1 = td.cloneNode(true);-->
+            <!--td1.innerText = v1[i].userid;-->
+            <!--tdr1.appendChild(td1);-->
+            <!--var td2 = td.cloneNode(true);-->
+            <!--td2.innerText = v1[i].username;-->
+            <!--tdr1.appendChild(td2);-->
+            <!--var td3 = td.cloneNode(true);-->
+            <!--td3.innerText = v1[i].pwd;-->
+            <!--tdr1.appendChild(td3);-->
+            <!--document.getElementById('table1').appendChild(tdr1);-->
+        <!--}-->
+    <!--}-->
+<!--</script>-->
+
+

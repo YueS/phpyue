@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>畅游天地 喜出网外</title>
+    <link type="text/css" rel="stylesheet" href="css/main_s.css">
+    <script src="js/jquery-3.1.1.js"></script>
+    <!--<script src="js/main.js"></script>-->
+</head>
+<body>
+<header class="header_s">
+    <nav>
+        <ul>
+            <li><a href="index_s.html">首页</a></li>
+            <li class="show_u"><a>案例展示</a>
+                <ul class="show_s">
+                    <li><a href="#">埃德森</a></li>
+                    <li><a href="che.html">车行健</a></li>
+                </ul>
+            </li>
+            <img src="images/pic/logo_s1.png">
+            <li><a href="aboutus.html">关于我们</a></li>
+            <li><a>联系我们</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="kf">
+    <div class="kf_l">客<br/>服</div>
+    <div class="kf_r">
+        &nbsp;&nbsp;&nbsp;客服电话：400-0000-5658<br/>
+        &nbsp;&nbsp;&nbsp;客服QQ：123456789156<br/>
+    </div>
+</div>
+<div class="xcww_box_a">
+    <!--<img src="images/xcww.png">-->
+</div>
+<!--页脚-->
+<div class="footer_y">
+    <div class="footer_s">
+        <div class="footer_s1">
+            <img src="images/pic/erweima.jpg">
+            <div class="footer_s1s">
+                龙商满堂红（北京）集团有限公司<br/>
+                电话：010-000000<br/>
+                地址：黑龙江省哈尔滨市平房区<br/>
+                动漫产业基地X栋<br/>
+            </div>
+        </div>
+        <ul class="footer_s2s">
+            <li><a href="#">版权声明</a></li>
+            <li><a href="#">免责声明</a></li>
+            <li>备案号：© 2016 畅游天地 黑ICP证080268号</li>
+
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    $(".header_s").animate({top:"0px"},1000);
+    //    客服菜单固定
+    $(".kf_shows").click(function () {
+        $(".kf").toggleClass("kf_show");
+    });
+    $(".kf").click(function(){
+        $(this).toggleClass("kf_show");
+    });
+</script>
+</body>
+</html>

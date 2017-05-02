@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)http://192.168.1.48:81/javascriptproject_33/test71.html -->
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //监听message事件
+        window.addEventListener("message",function(e){
+            //如果只想接收指定地址的数据  e.origin  事件源
+            if(e.origin!="")
+
+           alert(e.data);//e.data远程发来的数据
+        },false);
+
+    </script>
+</head>
+<body>
+  子框架11111
+
+</body></html>

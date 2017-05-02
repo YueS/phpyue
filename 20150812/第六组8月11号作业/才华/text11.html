@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        td{
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <p>姓名：<input type="text" id="uname"></p>
+    <p>年龄：<input type="text" id="uage"></p>
+    <p>工资：<input type="text" id="wages"></p>
+    <p>入职日期：<input type="text" id="date"></p>
+    <p>职位：<input type="text" id="zw"></p>
+    <p>所属部门：<select id="s1">
+    </select></p>
+    <input type="button" value="注册" onclick="zhuce()">
+    <input type="button" value="查询" onclick="chaxun()">
+</form>
+<table id="table1">
+    <tr>
+        <td>员工id</td>
+        <td>姓名</td>
+        <td>工资</td>
+        <td>部门名称</td>
+        <td>部门描述</td>
+        <td>操作</td>
+    </tr>
+</table>
+</body>
+</html>
+<script>
+    var s1 = document.getElementById('s1');
+    var tablle1 = document.getElementById('table1');
+    var kp = tablle1.innerHTML;
+    var a = getdata("text111.php",null);
+    a = eval(a);
+    for(var i=0;i< a.length;i++){
+        var t = "<option value='"+a[i].id+"'>"+a[i].zhiwei+"</option>";
+        s1.innerHTML+=t;
+    }
+    function xg(c){
+        var p1 = c.parentNode.parentNode.children[1];
+        var p2 = c.parentNode.parentNode.children[2];
+        p1.innerHTML = "<input type='text' name='n'value='"+p1.innerText +"'>";
+        p2.innerHTML = "<input type='text' name='n'value='"+p2.innerText +"'>";
+    }
+    function save(c){
+        var p0 = c.parentNode.parentNode.children[0].innerText;
+        var p1 = c.parentNode.parentNode.children[1].children[0].value;
+        var p2 = c.parentNode.parentNode.children[2].children[0].value;
+        c.parentNode.parentNode.children[1].innerHTML = p1;
+        c.parentNode.parentNode.children[2].innerHTML = p2;
+        var a = getdata("text11111.php","id="+p0+"&name="+p1+"&wages="+p2);
+        a = eval(a);
+    }
+    function chaxun(){
+        tablle1.innerHTML=kp;
+        var a = getdata("text1111.php",null);
+        var v1 = eval(a);
+        var tr = document.createElement("tr");
+        var td = document.createElement("td");
+        for(var i=0;i<v1.length;i++){
+            var tdr1 = tr.cloneNode(true);
+            var td1 = td.cloneNode(true);
+            td1.innerText = v1[i].id;
+            tdr1.appendChild(td1);
+            var td2 = td.cloneNode(true);
+            td2.innerText = v1[i].name;
+            tdr1.appendChild(td2);
+            var td3 = td.cloneNode(true);
+            td3.innerText = v1[i].wages;
+            tdr1.appendChild(td3);
+            var td4 = td.cloneNode(true);
+            td4.innerText = v1[i].zhiwei;
+            tdr1.appendChild(td4);
+            var td5 = td.cloneNode(true);
+            td5.innerText = v1[i].bz;
+            tdr1.appendChild(td5);
+            var td6 = td.cloneNode(true);
+            td6.innerHTML = "<input type='button' value='修改' onclick='xg(this)'><input type='button'value='保存' onclick='save(this)'>";
+            tdr1.appendChild(td6);
+            document.getElementById('table1').appendChild(tdr1);
+        }
+    }
+    function zhuce(){
+        var arg = "";
+        arg+="uname="+document.getElementById('uname').value;
+        arg+="&uage="+document.getElementById('uage').value;
+        arg+="&wages="+document.getElementById('wages').value;
+        arg+="&date="+document.getElementById('date').value;
+        arg+="&zw="+document.getElementById('zw').value;
+        arg+="&s1="+document.getElementById('s1').value;
+        var k = getdata("text11.php",arg);
+        alert(k);
+    }
+    function createXHR(){
+        var XHRequest;
+        if(window.XMLHttpRequest){
+            XHRequest = new XMLHttpRequest;
+        }else if(window.ActiveXObject){
+            try{
+                XHRequest = new ActiveXObject("Msxml2.XMLHTTP");
+             } catch(e){
+                    XHRequest = new ActiveXObject("Microsoft.XMLHTTP");
+             }
+        }
+        return XHRequest;
+    }
+    function getdata(url,arg){
+        var XHRequest=createXHR();
+        XHRequest.open("POST",url,false);
+        XHRequest.setRequestHeader('Content-type',"application/x-www-form-urlencoded");
+        var v_str;
+        XHRequest.onreadystatechange=function(){
+        if(XHRequest.readyState==4 && XHRequest.status==200){
+            v_str = XHRequest.responseText;
+            }
+        };
+        XHRequest.send(arg);
+        return v_str;
+    }
+
+</script>

@@ -1,0 +1,57 @@
+<!--于瑞彬 11:41:56 (多人发送)-->
+<!--才华 11:40:49-->
+<html>
+<body>
+<?php
+   header("Content-type:text/html;charset=utf-8");
+    $link=mysql_connect("localhost","root","root") or die("数据库连接失败".mysql_error());
+    $db=mysql_select_db("text_01",$link);
+    $sql="select * from t_user";
+    $result=mysql_query($sql,$link);
+    $result1=mysql_query($sql,$link);
+    $result2=mysql_query($sql,$link);
+    ?>
+<select>
+    <?php
+     while($row = mysql_fetch_array($result) ){
+     ?>
+    <option>
+        <?php
+           echo $row['userid'];
+           ?>
+    </option>
+
+    <?php
+     }
+    ?>
+</select>
+<select>
+    <?php
+         while($row = mysql_fetch_array($result1) ){
+         ?>
+    <option>
+        <?php
+               echo $row['username'];
+               ?>
+    </option>
+
+    <?php
+         }
+        ?>
+</select>
+<select>
+    <?php
+             while($row = mysql_fetch_array($result2) ){
+             ?>
+    <option>
+        <?php
+                   echo $row['pwd'];
+                   ?>
+    </option>
+
+    <?php
+             }
+            ?>
+</select>
+</body>
+</html> 

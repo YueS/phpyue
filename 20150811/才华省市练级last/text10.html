@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #d1 span{
+            padding: 6px 8px;
+        }
+    </style>
+</head>
+<body>
+<select id="s1" onchange="fun()"></select>
+<div id="d1"></div>
+</body>
+</html>
+<script>
+    var s1 = document.getElementById('s1');
+    var a = getdata("text10.php",null);
+    a = eval(a);
+    for(var i=0;i< a.length;i++){
+        var t = "<option value='"+a[i].id+"'>"+a[i].city+"</option>";
+        s1.innerHTML+=t;
+    }
+    fun();
+    function fun(){
+        document.getElementById('d1').innerHTML="";
+        var c = s1.value;
+        var k = getdata("text101.php?value="+c,null);
+        k = eval(k);
+        for(var i=0;i< k.length;i++){
+            var t = "<span>"+k[i].s+"</span>";
+            document.getElementById('d1').innerHTML+=t;
+        }
+    }
+    function createXHR(){
+        var XHRequest;
+        if(window.XMLHttpRequest){
+            XHRequest = new XMLHttpRequest;
+        }else if(window.ActiveXObject){
+            try{
+                XHRequest = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch(e){
+                XHRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return XHRequest;
+    }
+    function getdata(url,arg){
+        var XHRequest=createXHR();
+        XHRequest.open("GET",url,false);
+        var v_str;
+        XHRequest.onreadystatechange=function(){
+            if(XHRequest.readyState==4 && XHRequest.status==200){
+                v_str = XHRequest.responseText;
+            }
+        };
+        XHRequest.send();
+        return v_str;
+    }
+
+</script>

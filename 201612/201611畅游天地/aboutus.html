@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>畅游天地</title>
+    <link type="text/css" rel="stylesheet" href="css/main_s.css">
+    <script src="js/jquery-3.1.1.js"></script>
+</head>
+<body>
+<div class="kf">
+    <div class="kf_l">客<br/>服</div>
+    <div class="kf_r">
+        &nbsp;&nbsp;&nbsp;客服电话：400-0000-5658<br/>
+        &nbsp;&nbsp;&nbsp;客服QQ：123456789156<br/>
+    </div>
+</div>
+<header class="header_s">
+    <nav>
+        <ul>
+            <li><a href="index_vrp2.html">首页</a></li>
+            <li class="show_u"><a>案例展示</a>
+                <ul class="show_s">
+                    <!--<li><a href="#">埃德森</a></li>-->
+                    <li><a href="che.html">车行健</a></li>
+                </ul>
+            </li>
+            <img src="images/pic/logo_s1.png">
+            <li><a href="aboutus.html">关于我们</a></li>
+            <li><a class="kf_shows">联系我们</a></li>
+        </ul>
+    </nav>
+</header>
+<!--关于我们-->
+<div class="box_d">
+    <div class="box_ds">
+        <img  class="logo_box_d" src="images/pic/logo_gy.png">
+        <p>
+            龙商满堂红（北京）集团旗下哈尔滨市畅游天地科技开发有限公司是一家以互联网为依托，为传统行业提供互联网+新兴模式客制化的网络服务公司，是专业为商务客户研发手机APP，网络游戏，大型软件，企业网站制作等配套设备，集运营，销售及推广于一体的中国数字化产品及服务提供商。此外，公司还自主研发、运营互联网+汽车紧急救援等首项目。
+        </p>
+        <p>
+            公司团队最早成立于2008年1月。2015年，公司团队整体转型，开始以互联网为依托，进行专业的客制化服务，为不同商业类型的客户进行手机类应用产品的制作，开发了畅游OA，畅游CRM等服务软件，同时为上百家龙江企业制作公司网站及微信平台服务。
+            2016年，公司正式进军VR技术研发，并以VR技术作为宣传、展示素材，配套制作了大美龙江·VR视界、VR视界·雪乡行等相关旅游项目，以及汉简产业园区大型汉代VR制作、婚礼全景直播、婚礼VR展示等多项VR研发项目。
+        </p>
+        <div><a>关于我们</a></div>
+    </div>
+</div>
+<!--我们的团队-->
+<div class="box_b" id="box_b">
+    <img src="images/pic/team.jpg">
+</div>
+<!--照片墙-->
+<div class="box_c">
+    <ul>
+        <li><img src="images/team/1.png"></li>
+        <li><img src="images/team/2.png"></li>
+        <li><img src="images/team/3.png"></li>
+        <li><img src="images/team/4.png"></li>
+        <li><img src="images/team/5.png"></li>
+        <li><img src="images/team/6.png"></li>
+        <li class="grey_595959 grey"></li>
+        <li class="grey_666666 grey"></li>
+        <li class="grey_737373 grey"></li>
+        <li class="grey_7F7F7F grey"></li>
+        <li class="grey_8C8C8C grey"></li>
+        <li class="grey_999999 grey"></li>
+
+        <li><img src="images/team/7.png"></li>
+        <li><img src="images/team/8.png"></li>
+        <li><img src="images/team/9.png"></li>
+        <li><img src="images/team/10.png"></li>
+        <li><img src="images/team/11.png"></li>
+        <li><img src="images/team/12.png"></li>
+        <li class="grey_333333 grey"></li>
+        <li class="grey_404040 grey"></li>
+        <li class="grey_4C4C4C grey"></li>
+        <li class="grey_595959 grey"></li>
+        <li class="grey_666666 grey"></li>
+        <li class="grey_737373 grey"></li>
+
+        <li><img src="images/team/13.png"></li>
+        <li><img src="images/team/14.png"></li>
+        <li><img src="images/team/15.png"></li>
+        <li><img src="images/team/16.png"></li>
+        <li><img src="images/team/17.png"></li>
+        <li><img src="images/team/18.png"></li>
+        <li><img src="images/team/19.png"></li>
+        <li class="grey_191919 grey"></li>
+        <li class="grey_262626 grey"></li>
+        <li class="grey_333333 grey"></li>
+        <li class="grey_404040 grey"></li>
+        <li class="grey_4C4C4C grey"></li>
+    </ul>
+</div>
+
+<!--页脚-->
+<div class="footer_y">
+    <div class="footer_s">
+        <div class="footer_s1">
+            <img src="images/pic/erweima.jpg">
+            <div class="footer_s1s">
+                龙商满堂红（北京）集团有限公司<br/>
+                电话：010-000000<br/>
+                地址：黑龙江省哈尔滨市平房区<br/>
+                动漫产业基地X栋<br/>
+            </div>
+        </div>
+        <ul class="footer_s2s">
+            <li><a href="#">版权声明</a></li>
+            <li><a href="#">免责声明</a></li>
+            <li>备案号：© 2016 畅游天地 黑ICP证080268号</li>
+
+        </ul>
+    </div>
+
+</div>
+
+<script>
+    //    顶部菜单动画
+    $(".header_s").animate({top:"0px"},1000);
+    //    客服菜单固定
+    $(".kf_shows").click(function () {
+        $(".kf").toggleClass("kf_show");
+    });
+    $(".kf").click(function(){
+        $(this).toggleClass("kf_show");
+    });
+</script>
+
+</body>
+</html>
